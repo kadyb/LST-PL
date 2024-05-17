@@ -71,9 +71,26 @@ legend.onAdd = function (map) {
 
 function getColor(category) {
     switch (category) {
-        case 'Category 1': return '#ff0000';
-        case 'Category 2': return '#00ff00';
-        case 'Category 3': return '#0000ff';
+        case 'UME': return '#490005';
+        case 'UMI': return '#9c6e6c';
+        case 'UMV': return '#859381';
+        case 'UMS': return '#b78958';
+        case 'UHE': return '#9b8c6b';
+        case 'PRH': return '#da9e13';
+        case 'PRMu': return '#cab443';
+        case 'PRMl': return '#d0ec89';
+        case 'PRLu': return '#d9e1c3';
+        case 'PRLl': return '#cdde8b';
+        case 'PDV': return '#81a2ac';
+        case 'PDEu': return '#b6bfc1';
+        case 'PDEl': return '#8ca59c';
+        case 'PSI': return '#b7a0c0';
+        case 'PSL': return '#e1cff1';
+        case 'PSF': return '#c7c6cc';
+        case 'PFR': return '#b9d7c7';
+        case 'PFD': return '#96b69d';
+        case 'PFSu': return '#91c0b9';
+        case 'PFSl': return '#9fd8e7';
         default: return '#ffffff';
     }
 }
