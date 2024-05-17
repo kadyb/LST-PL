@@ -53,8 +53,9 @@ note.addTo(map);
 var legend = L.control({position: 'bottomright'});
 legend.onAdd = function (map) {
     var div = L.DomUtil.create('div', 'info legend'),
-        categories = ['Category 1', 'Category 2', 'Category 3'],
-        labels = ['<strong> Legend Title </strong>'];
+        categories = ['UME', 'UMI', 'UMV', 'UMS', 'UHE', 'PRH', 'PRMu', 'PRMl', 'PRLu', 'PRLl',
+                      'PDV', 'PDEu', 'PDEl', 'PSI', 'PSL', 'PSF', 'PFR', 'PFD', 'PFSu', 'PFSl'],
+        labels = ['<strong> Land surface types </strong>'];
 
     for (var i = 0; i < categories.length; i++) {
         labels.push(
