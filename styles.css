@@ -13,11 +13,6 @@ body, table, tr, td, th, div, h1, h2, input { font-family: "Calibri", "Trebuchet
     text-align: right;
 }
 
-.title {
-    font-size: 18pt;
-    font-weight: bold;
-}
-
 .src {
     font-size: 10pt;
 }
