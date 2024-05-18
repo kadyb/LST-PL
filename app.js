@@ -64,6 +64,32 @@ function getColor(category) {
     }
 }
 
+function getHint(category) {
+    switch (category) {
+        case 'UME': return 'legend item hint placeholder';
+        case 'UMI': return 'legend item hint placeholder';
+        case 'UMV': return 'legend item hint placeholder';
+        case 'UMS': return 'legend item hint placeholder';
+        case 'UHE': return 'legend item hint placeholder';
+        case 'PRH': return 'legend item hint placeholder';
+        case 'PRMu': return 'legend item hint placeholder';
+        case 'PRMl': return 'legend item hint placeholder';
+        case 'PRLu': return 'legend item hint placeholder';
+        case 'PRLl': return 'legend item hint placeholder';
+        case 'PDV': return 'legend item hint placeholder';
+        case 'PDEu': return 'legend item hint placeholder';
+        case 'PDEl': return 'legend item hint placeholder';
+        case 'PSI': return 'legend item hint placeholder';
+        case 'PSL': return 'legend item hint placeholder';
+        case 'PSF': return 'legend item hint placeholder';
+        case 'PFR': return 'legend item hint placeholder';
+        case 'PFD': return 'legend item hint placeholder';
+        case 'PFSu': return 'legend item hint placeholder';
+        case 'PFSl': return 'legend item hint placeholder';
+        default: return 'legend item hint placeholder';
+    }
+}
+
 var legend = L.control({position: 'bottomright'});
 legend.onAdd = function (map) {
     var div = L.DomUtil.create('div', 'info legend'),
@@ -72,9 +98,11 @@ legend.onAdd = function (map) {
         labels = ['<strong> Land surface types </strong>'];
 
     for (var i = 0; i < categories.length; i++) {
+        var color = getColor(categories[i])
+        var hint = getHint(categories[i])
         labels.push(
-            '<i style="opacity:' + map_opacity + ';background:' + getColor(categories[i]) + '"></i> ' +
-            categories[i]
+            '<i title="' + hint + '"style="opacity:' + map_opacity + ';background:' + color + '"></i> ' +
+            '<span title="' + hint + '">' + categories[i] + '</span>'
         );
     }
 
@@ -84,6 +112,9 @@ legend.onAdd = function (map) {
     return div;
 };
 legend.addTo(map);
+
+//Scale
+L.control.scale({imperial: false}).addTo(map)
 
 // Add to Layers panel
 L.control.layers(basemaps, overlaymaps, {collapsed: false}).addTo(map);
