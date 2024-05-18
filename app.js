@@ -56,7 +56,7 @@ function getColor(category) {
         case 'PDEu': return '#b6bfc1';
         case 'PDEl': return '#8ca59c';
         case 'PSI': return '#b7a0c0';
-        case 'PSL': return '#e1cff1';
+        case 'PSG': return '#e1cff1';
         case 'PSF': return '#c7c6cc';
         case 'PFR': return '#b9d7c7';
         case 'PFD': return '#96b69d';
@@ -68,27 +68,27 @@ function getColor(category) {
 
 function getHint(category) {
     switch (category) {
-        case 'UME': return 'legend item hint placeholder';
-        case 'UMI': return 'legend item hint placeholder';
-        case 'UMV': return 'legend item hint placeholder';
-        case 'UMS': return 'legend item hint placeholder';
-        case 'UHE': return 'legend item hint placeholder';
-        case 'PRH': return 'legend item hint placeholder';
-        case 'PRMu': return 'legend item hint placeholder';
-        case 'PRMl': return 'legend item hint placeholder';
-        case 'PRLu': return 'legend item hint placeholder';
-        case 'PRLl': return 'legend item hint placeholder';
-        case 'PDV': return 'legend item hint placeholder';
-        case 'PDEu': return 'legend item hint placeholder';
-        case 'PDEl': return 'legend item hint placeholder';
-        case 'PSI': return 'legend item hint placeholder';
-        case 'PSL': return 'legend item hint placeholder';
-        case 'PSF': return 'legend item hint placeholder';
-        case 'PFR': return 'legend item hint placeholder';
-        case 'PFD': return 'legend item hint placeholder';
-        case 'PFSu': return 'legend item hint placeholder';
-        case 'PFSl': return 'legend item hint placeholder';
-        default: return 'legend item hint placeholder';
+        case 'UME': return 'Uplands, medium Mountains, Elevated';
+        case 'UMI': return 'Uplands, medium Mountains, Inner parts';
+        case 'UMV': return 'Uplands, Mountains, Valleys';
+        case 'UMS': return 'Uplands, low Mountains, Slopes/highlands';
+        case 'UHE': return 'Uplands, Highlands, Elevated';
+        case 'PRH': return 'Plain, Rolling, High density';
+        case 'PRMu': return 'Plain, Rolling, Medium density, upper';
+        case 'PRMl': return 'Plain, Rolling, Medium density, lower';
+        case 'PRLu': return 'Plain, Rolling, Low density, upper';
+        case 'PRLl': return 'Plain, Rolling, Low density, lower';
+        case 'PDV': return 'Plain, Dissection, Valleys';
+        case 'PDEu': return 'Plain, Dissection, Edges, upper';
+        case 'PDEl': return 'Plain, Dissection, Edges, lower';
+        case 'PSI': return 'Plain, Smooth, Inclined';
+        case 'PSG': return 'Plain, Smooth, Gently inclined';
+        case 'PSF': return 'Plain, Smooth, near-Flat';
+        case 'PFR': return 'Plain, near-Flat, Rough';
+        case 'PFD': return 'Plain, near-Flat, Dissections';
+        case 'PFSu': return 'Plain, near-Flat, Smooth, upper';
+        case 'PFSl': return 'Plain, near-Flat, Smooth, lower';
+        default: return 'Placeholder';
     }
 }
 
@@ -96,7 +96,7 @@ var legend = L.control({position: 'bottomright'});
 legend.onAdd = function (map) {
     var div = L.DomUtil.create('div', 'info legend'),
         categories = ['UME', 'UMI', 'UMV', 'UMS', 'UHE', 'PRH', 'PRMu', 'PRMl', 'PRLu', 'PRLl',
-                      'PDV', 'PDEu', 'PDEl', 'PSI', 'PSL', 'PSF', 'PFR', 'PFD', 'PFSu', 'PFSl'],
+                      'PDV', 'PDEu', 'PDEl', 'PSI', 'PSG', 'PSF', 'PFR', 'PFD', 'PFSu', 'PFSl'],
         labels = ['<strong> Land surface types </strong>'];
 
     for (var i = 0; i < categories.length; i++) {
@@ -115,7 +115,7 @@ legend.onAdd = function (map) {
 };
 legend.addTo(map);
 
-//Scale
+// Scale
 L.control.scale({imperial: false}).addTo(map)
 
 // Add to Layers panel
