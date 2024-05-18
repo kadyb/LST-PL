@@ -7,6 +7,8 @@ var osm = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {attribution: '
 
 var cartodb = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>', minZoom: 6, maxZoom: 14});
 
+var ortho = L.tileLayer.wms('https://mapy.geoportal.gov.pl/wss/service/PZGIK/ORTO/WMS/StandardResolution', {layers: 'Raster', minZoom: 6, maxZoom: 14});
+
 var white = L.tileLayer("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEAAQMAAABmvDolAAAAA1BMVEX///+nxBvIAAAAH0lEQVQYGe3BAQ0AAADCIPunfg43YAAAAAAAAAAA5wIhAAAB9aK9BAAAAABJRU5ErkJggg==", {minZoom: 6, maxZoom: 14});
 
 // Overlay layers (TMS)
@@ -21,7 +23,7 @@ var map = L.map('map', {
     layers: [osm, lyr]
 });
 
-var basemaps = {"OpenStreetMap": osm, "CartoDB Positron": cartodb, "Without background": white}
+var basemaps = {"OpenStreetMap": osm, "CartoDB Positron": cartodb, "Orthophotomap": ortho, "Without background": white}
 var overlaymaps = {"Land surface types": lyr}
 
 // Note
