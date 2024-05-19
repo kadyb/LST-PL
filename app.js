@@ -40,56 +40,32 @@ note.update = function(props) {
 note.addTo(map);
 
 // Legend
-function getColor(category) {
-    switch (category) {
-        case 'UME': return '#490005';
-        case 'UMI': return '#9c6e6c';
-        case 'UMV': return '#859381';
-        case 'UMS': return '#b78958';
-        case 'UHE': return '#9b8c6b';
-        case 'PRH': return '#da9e13';
-        case 'PRMu': return '#cab443';
-        case 'PRMl': return '#d0ec89';
-        case 'PRLu': return '#d9e1c3';
-        case 'PRLl': return '#cdde8b';
-        case 'PDV': return '#81a2ac';
-        case 'PDEu': return '#b6bfc1';
-        case 'PDEl': return '#8ca59c';
-        case 'PSI': return '#b7a0c0';
-        case 'PSG': return '#e1cff1';
-        case 'PSF': return '#c7c6cc';
-        case 'PFR': return '#b9d7c7';
-        case 'PFD': return '#96b69d';
-        case 'PFSu': return '#91c0b9';
-        case 'PFSl': return '#9fd8e7';
-        default: return '#ffffff';
-    }
-}
+function getCategoryAttributes(category) {
+    const attributes = {
+        'UME': { color: '#490005', hint: 'Uplands, medium Mountains, Elevated' },
+        'UMI': { color: '#9c6e6c', hint: 'Uplands, medium Mountains, Inner parts' },
+        'UMV': { color: '#859381', hint: 'Uplands, Mountains, Valleys' },
+        'UMS': { color: '#b78958', hint: 'Uplands, low Mountains, Slopes/highlands' },
+        'UHE': { color: '#9b8c6b', hint: 'Uplands, Highlands, Elevated' },
+        'PRH': { color: '#da9e13', hint: 'Plain, Rolling, High density' },
+        'PRMu': { color: '#cab443', hint: 'Plain, Rolling, Medium density, upper' },
+        'PRMl': { color: '#d0ec89', hint: 'Plain, Rolling, Medium density, lower' },
+        'PRLu': { color: '#d9e1c3', hint: 'Plain, Rolling, Low density, upper' },
+        'PRLl': { color: '#cdde8b', hint: 'Plain, Rolling, Low density, lower' },
+        'PDV': { color: '#81a2ac', hint: 'Plain, Dissection, Valleys' },
+        'PDEu': { color: '#b6bfc1', hint: 'Plain, Dissection, Edges, upper' },
+        'PDEl': { color: '#8ca59c', hint: 'Plain, Dissection, Edges, lower' },
+        'PSI': { color: '#b7a0c0', hint: 'Plain, Smooth, Inclined' },
+        'PSG': { color: '#e1cff1', hint: 'Plain, Smooth, Gently inclined' },
+        'PSF': { color: '#c7c6cc', hint: 'Plain, Smooth, near-Flat' },
+        'PFR': { color: '#b9d7c7', hint: 'Plain, near-Flat, Rough' },
+        'PFD': { color: '#96b69d', hint: 'Plain, near-Flat, Dissections' },
+        'PFSu': { color: '#91c0b9', hint: 'Plain, near-Flat, Smooth, upper' },
+        'PFSl': { color: '#9fd8e7', hint: 'Plain, near-Flat, Smooth, lower' },
+        'default': { color: '#ffffff', hint: 'Placeholder' }
+    };
 
-function getHint(category) {
-    switch (category) {
-        case 'UME': return 'Uplands, medium Mountains, Elevated';
-        case 'UMI': return 'Uplands, medium Mountains, Inner parts';
-        case 'UMV': return 'Uplands, Mountains, Valleys';
-        case 'UMS': return 'Uplands, low Mountains, Slopes/highlands';
-        case 'UHE': return 'Uplands, Highlands, Elevated';
-        case 'PRH': return 'Plain, Rolling, High density';
-        case 'PRMu': return 'Plain, Rolling, Medium density, upper';
-        case 'PRMl': return 'Plain, Rolling, Medium density, lower';
-        case 'PRLu': return 'Plain, Rolling, Low density, upper';
-        case 'PRLl': return 'Plain, Rolling, Low density, lower';
-        case 'PDV': return 'Plain, Dissection, Valleys';
-        case 'PDEu': return 'Plain, Dissection, Edges, upper';
-        case 'PDEl': return 'Plain, Dissection, Edges, lower';
-        case 'PSI': return 'Plain, Smooth, Inclined';
-        case 'PSG': return 'Plain, Smooth, Gently inclined';
-        case 'PSF': return 'Plain, Smooth, near-Flat';
-        case 'PFR': return 'Plain, near-Flat, Rough';
-        case 'PFD': return 'Plain, near-Flat, Dissections';
-        case 'PFSu': return 'Plain, near-Flat, Smooth, upper';
-        case 'PFSl': return 'Plain, near-Flat, Smooth, lower';
-        default: return 'Placeholder';
-    }
+    return attributes[category] || attributes['default'];
 }
 
 var legend = L.control({position: 'bottomright'});
@@ -100,11 +76,10 @@ legend.onAdd = function (map) {
         labels = ['<strong> Land surface types </strong>'];
 
     for (var i = 0; i < categories.length; i++) {
-        var color = getColor(categories[i])
-        var hint = getHint(categories[i])
+        var categoryAttributes = getCategoryAttributes(categories[i])
         labels.push(
-            '<i title="' + hint + '"style="opacity:' + map_opacity + ';background:' + color + '"></i> ' +
-            '<span title="' + hint + '">' + categories[i] + '</span>'
+            '<i title="' + categoryAttributes.hint + '"style="opacity:' + map_opacity + ';background:' + categoryAttributes.color + '"></i> ' +
+            '<span title="' + categoryAttributes.hint + '">' + categories[i] + '</span>'
         );
     }
 
